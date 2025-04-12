@@ -1,6 +1,7 @@
 import Sidebar from "./sideBar"
 import Toolbar from "./Toolbar"
-import ListItems from "./ListItems"
+import { ListItems } from "./ListItems"
+import { groceryItems } from "./data"
 
 const tags = [
 "Breakfast",
@@ -21,7 +22,7 @@ export default function App() {
     <Toolbar/>
     <div className="d-flex flex-grow-1">
       <Sidebar/>
-      <ListItems/>
+      <ListItems items={groceryItems} />
     </div>
   </div>
 </div>

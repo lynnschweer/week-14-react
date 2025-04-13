@@ -10,4 +10,4 @@ export default function Toolbar() {
         <ToolbarButton icon={removeIcon} onClick={() => alert('Remove item')} />
             </div>
             )
-            }
+}

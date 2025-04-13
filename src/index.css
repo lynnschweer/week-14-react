@@ -1,1 +1,25 @@
+h1 {
+    color: red;
+    font-size: 2em;
+    text-align: center;
+}
+.sidebar {
+    position: fixed;
+    width: 200px;
+    height: 400px;
+}
 
+.content {
+    margin-left: 200px;
+    height: 500px;
+    width: auto;
+    position: relative;
+    overflow: auto;
+    z-index: 1;
+}
+
+.info {
+    width: 1440px;
+    height: 300px;
+    position: relative;
+}

@@ -4,16 +4,19 @@ import { Button } from "react-bootstrap";
 
 //PARENT
 const Toolbar = [
-  { name: "Breakfast", href: "/breakfast", id:0 },
-  { name: "Lunch", href: "/lunch",id:1 },
-  { name: "Dinner", href: "/dinner",id:2 },
+  { name: "Breakfast", href: "/breakfast", id:0, text:"beginning" },
+  { name: "Lunch", href: "/lunch",id:1,text: "middle" }, 
+  { name: "Dinner", href: "/dinner",id:2,text: "end"},
 ];
 
+type ToolbarChildProps = {
+  setSelectedFoodId: (id: number) => void;
+  selectedFoodId: number;
+};
 
 //CHILD
-export default function ToolbarChild() {
+export default function ToolbarChild({setSelectedFoodId, selectedFoodId}: ToolbarChildProps) {
   const [isExpanded, setIsExpanded] = useState(true);
-  const [selectedFoodId, setSelectedFoodId] = useState(0);
 
   const handleButtonClick = () => {
     setIsExpanded(!isExpanded);
@@ -49,22 +52,4 @@ export default function ToolbarChild() {
     </div>
   );
 }
-    
-
-
-/* // //DROPDOWN COMPONENET
-//   return (
-//     <Dropdown>
-//       <Dropdown.Toggle variant="success" id="dropdown-basic">
-//         Dropdown Button
-//       </Dropdown.Toggle>
-
-//       <Dropdown.Menu>
-//         <Dropdown.Item href="#/action-1">Breakfast</Dropdown.Item>
-//         <Dropdown.Item href="#/action-2">Lunch</Dropdown.Item>
-//         <Dropdown.Item href="#/action-3">Dinner</Dropdown.Item>
-//       </Dropdown.Menu>
-//     </Dropdown>
-//   );
-// } */
-
+  

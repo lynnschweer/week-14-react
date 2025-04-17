@@ -16,6 +16,8 @@ type FoodIdProps = {
   setSelectedFoodId?: (id: number) => void;
   href?: string;
   onFoodIdSelected?: (id: number) => void;
+  text?: string;
+  selectedFoodId?: number;
 };
 
 

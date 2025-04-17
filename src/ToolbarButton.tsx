@@ -1,8 +1,9 @@
+//THIS IS MY TOOLBAR BUTTON PROPO
 type ToolbarButtonProps = {
   icon: string, onClick: () => void
 }
 
-export default function ToolbarButton({ icon, onClick }: ToolbarButtonProps) {
+export default function ToolbarButton({ icon, onClick, }: ToolbarButtonProps) {
     return (
      <button 
      className="btn btn-outline-secondary me-2"

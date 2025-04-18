@@ -4,9 +4,9 @@ import { Button } from "react-bootstrap";
 
 //PARENT
 const Toolbar = [
-  { name: "Breakfast", href: "/breakfast", id:0, text:"beginning" },
-  { name: "Lunch", href: "/lunch",id:1,text: "middle" }, 
-  { name: "Dinner", href: "/dinner",id:2,text: "end"},
+  { name: "Fruit", href: "/Fruit", id:0, text:"beginning" },
+  { name: "Vegetables", href: "Vegetables",id:1,text: "middle" }, 
+
 ];
 
 type ToolbarChildProps = {

@@ -6,15 +6,29 @@
 
 import MainHeader from "./mainHeader"
 import { ListItems } from "./ListItems"
-import { groceryItems } from "./data"
 import { useState } from "react";
 import Toolbar from "./Toolbar";
-import ToolbarChild from "./Toolbar";
+
+
+
 
 export default function App() {
   const [selectedFoodId, setSelectedFoodId] = useState(0);
 
-  const addFoodItem = ()=> {}
+  const initialItems = [{ name: 'Apples' }, { name: 'Bananas' }, { name: 'Carrots' }];
+
+  const [items, setItems] = useState(initialItems);
+  
+
+  // const handleAddItem = () => {
+  //   const newItem = { name: `Item ${items.length + 1}` };
+  //   setItems([...items, newItem]);
+  // };
+
+  const handleDeleteItem = (nameToDelete: string) => {
+    setItems(items.filter((item) => item.name !== nameToDelete));
+  };
+
 
   // const selectedFood = groceryItems.find(item => item.id === selectedFoodId);
   return (
@@ -24,8 +38,7 @@ export default function App() {
       {/* Main content area */}
       <div className="d-flex flex-column flex-grow-1">
         <Toolbar selectedFoodId={selectedFoodId} setSelectedFoodId={setSelectedFoodId} />
-        <ListItems items={groceryItems} FoodId={1} />
-        <ToolbarChild selectedFoodId={selectedFoodId} setSelectedFoodId={setSelectedFoodId} />
+        <ListItems items={items} onClick={handleDeleteItem} />
       </div>
     </div>
   );

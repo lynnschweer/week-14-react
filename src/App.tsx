@@ -6,7 +6,7 @@
 
 import MainHeader from "./mainHeader"
 import { ListItems } from "./ListItems"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Toolbar from "./Toolbar";
 
 export type GroceryItem = {
@@ -18,6 +18,26 @@ export type GroceryItem = {
 export default function App() {
   const [selectedFoodId, setSelectedFoodId] = useState(0);
 
+  const [newItemName, setNewItemName] = useState('');
+const [newItemCategory, setNewItemCategory] = useState('');
+
+const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
+
+  if (!newItemName || !newItemCategory) return; // basic validation
+
+  const newItem: GroceryItem = {
+    id: items.length > 0 ? items[items.length - 1].id + 1 : 0,
+    name: newItemName,
+    category: newItemCategory
+  };
+
+  setItems([...items, newItem]);
+
+  setNewItemName('');
+  setNewItemCategory('');
+};
+
   const initialItems: GroceryItem[] = [
     { id: 0, name: 'Apples', category: 'Fruit' },
     { id: 1, name: 'Bananas', category: 'Fruit' },
@@ -26,8 +46,15 @@ export default function App() {
     {id: 4, name: 'Blueberries', category: 'Fruit'},
     {id: 5, name: 'Spinach', category: 'Vegetables'}
   ];
-      
+  
+  //react hook holds array of grocery items, always an array of grocery items
   const [items, setItems] = useState<GroceryItem[]>(initialItems);
+
+  // const [unadded, added] = useState("")
+
+  // useEffect(() => {
+  //   document.title = 'items (${items.length})'
+  // }, [items.length])
 
   const updateToCategory = (idToUpdate: number, newCategory: string) => {
     setItems(prevItems =>
@@ -43,16 +70,51 @@ export default function App() {
     setItems(items.filter((item) => item.name !== nameToDelete));
   };
 
+  // const handleSubmit = () => {
+
+  // }
+
   return (
+/* <input>
+onChange={() => added(event?.target.value)}
+value={unadded}
+</input> */
+
     <div className="d-flex flex-column vh-100">
       <MainHeader />
+
+<form onSubmit={handleSubmit} className="p-3 d-flex gap-2 align-items-end">
+  {/* form contents */}
+</form>
       <div className="d-flex flex-column flex-grow-1">
         <Toolbar
           selectedFoodId={selectedFoodId}
           setSelectedFoodId={setSelectedFoodId}
           updateToCategory={updateToCategory}
         />
-
+<form onSubmit={handleSubmit} className="p-3 d-flex gap-2 align-items-end">
+  <div>
+    <label className="form-label">Food Name</label>
+    <input 
+      type="text"
+      className="form-control"
+      value={newItemName}
+      onChange={(e) => setNewItemName(e.target.value)}
+      placeholder="e.g. Mango"
+    />
+  </div>
+  <div>
+    <label className="form-label">Category</label>
+    <input 
+      type="text"
+      className="form-control"
+      value={newItemCategory}
+      onChange={(e) => setNewItemCategory(e.target.value)}
+      placeholder="e.g. Fruit"
+    />
+  </div>
+  <button type="submit" className="btn btn-success">Add Food</button>
+</form>
 <ListItems
   items={items}
   setItems={setItems}

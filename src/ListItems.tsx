@@ -8,17 +8,10 @@ type ListProps = {
   selectedFoodId: number;
 };
 
-export function ListItems({ items, setItems, onClick }: ListProps) {
-  const handleAddItem = () => {
-    const newItem: GroceryItem = {
-      id: items.length > 0 ? items[items.length - 1].id + 1 : 0,
-      name: `Item ${items.length + 1}`,
-      category: ""
-    };
-    setItems([...items, newItem]);
-  };
+export function ListItems({ items, onClick }: ListProps) {
+  
 
-  function setSelectedFoodId(id: number): void {
+  function setSelectedFoodId(_id: number): void {
     throw new Error("Function not implemented.");
   }
 
@@ -57,9 +50,6 @@ export function ListItems({ items, setItems, onClick }: ListProps) {
 
       </table>
 
-      <button onClick={handleAddItem} className="btn btn-primary">
-        Add Item
-      </button>
     </div>
   );
 }

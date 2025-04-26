@@ -1,12 +1,13 @@
-//move test data in state
-//implement create ability
-//implement delete ability
-//implement update ability
-
+// It has at least 3 React components
+// It’s displaying the data
+// It’s using at least 1 prop
+// A user can create new items
+// A user can delete items
+// A user can update at least one property on the items
 
 import MainHeader from "./mainHeader"
 import { ListItems } from "./ListItems"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Toolbar from "./Toolbar";
 
 export type GroceryItem = {

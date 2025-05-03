@@ -1,4 +1,4 @@
-import { GroceryItem } from "./App";
+import { GroceryItem } from "./Root";
 
 type ListProps = {
   items: GroceryItem[];

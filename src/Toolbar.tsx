@@ -28,47 +28,49 @@ export default function Toolbar({
   };
 
   return (
-    <div>
-      {isExpanded ? (
-        <div className="border-end bg-light p-3 d-flex flex-column">
-          {toolbarItems.map((s) => (
-            <a
-              key={s.name}
-              href={s.href}
-              data-is-selected={s.id === selectedFoodId}
-              onClick={() => handleMealClick(s.id)}
-              className="toolbar-link"
-            >
-              {s.name}
-            </a>
-          ))}
-
-          {/* Add category update buttons here */}
-          <div className="mt-3 d-flex gap-2">
-            <Button
-              className="btn btn-outline-success"
-              onClick={() => updateToCategory(selectedFoodId, "Fruit")}
-            >
-              Set as Fruit
-            </Button>
-            <Button
-              className="btn btn-outline-primary"
-              onClick={() => updateToCategory(selectedFoodId, "Vegetables")}
-            >
-              Set as Vegetable
-            </Button>
+      <div>
+        {isExpanded ? (
+          <div className="border-end bg-light p-3 d-flex flex-column">
+            {toolbarItems.map((s) =>
+              (s.name === "Fruit" || s.name === "Vegetables") ? null : (
+                <a
+                  key={s.name}
+                  href={s.href}
+                  data-is-selected={s.id === selectedFoodId}
+                  onClick={() => handleMealClick(s.id)}
+                  className="toolbar-link"
+                >
+                  {s.name}
+                </a>
+              )
+            )}
+    
+            {/* Add category update buttons here */}
+            <div className="mt-3 d-flex gap-2">
+              <Button
+                className="btn btn-outline-success"
+                onClick={() => updateToCategory(selectedFoodId, "Fruit")}
+              >
+                Set as Fruit
+              </Button>
+              <Button
+                className="btn btn-outline-primary"
+                onClick={() => updateToCategory(selectedFoodId, "Vegetables")}
+              >
+                Set as Vegetable
+              </Button>
+            </div>
           </div>
-        </div>
-      ) : null}
-
-      <Button
-        className="btn btn-outline-secondary me-2"
-        onClick={handleButtonClick}
-      >
-        {isExpanded ? "Collapse" : "Expand"}
-      </Button>
-    </div>
-  );
-}
+        ) : null}
+    
+        <Button
+          className="btn btn-outline-secondary me-2"
+          onClick={handleButtonClick}
+        >
+          {isExpanded ? "Collapse" : "Expand"}
+        </Button>
+      </div>
+    );
+  }
 
   

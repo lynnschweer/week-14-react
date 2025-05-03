@@ -1,0 +1,14 @@
+{
+  "GroceryItem": [
+    {
+      "id": "c911",
+      "name": "Mango",
+      "category": "Fruit"
+    },
+    {
+      "id": "7278",
+      "name": "Bread",
+      "category": "Wheat"
+    }
+  ]
+}
